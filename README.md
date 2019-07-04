@@ -280,14 +280,7 @@ OK
 ```
 
 ## UML diagram
-```mermaid
-graph LR
-A[OGR2OGR]
-A --> C(Convert GEOJSON to SHP)
-C --> D(Load SHP to ElasticSearch)
-D --> E
-E[ElasticSearch]
-```
+![Image of UML Diagram](https://i.imgur.com/zwDUrBg.png)
 
 ## Notes
 - This setup is for development purposes only.

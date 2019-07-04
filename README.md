@@ -8,8 +8,8 @@
 [ogr2ogr](https://gdal.org/programs/ogr2ogr.html) - can be used to convert simple features data between file formats. It can also perform various operations during the process, such as spatial or attribute selection, reducing the set of attributes, setting the output coordinate system or even reprojecting the features during translation.
 
 ## Installations
-How to install Docker on Ubuntu 18.04 [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04).
-How to install OGR2OGR on Ubuntu 18.04 [here](https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html)
+- How to install Docker on Ubuntu 18.04 [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04).
+- How to install OGR2OGR on Ubuntu 18.04 [here](https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html)
 
 ## Usage
 ```

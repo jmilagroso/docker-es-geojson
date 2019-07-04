@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ $# -eq 0 ]
+  then
+    echo "No input and output arguments supplied"
+    exit 1
+fi
+
 echo "Booting Docker.."
 sudo service docker start
 bootdocker=$?
@@ -61,7 +67,7 @@ else
 fi
 
 echo "Converting GEOJSON file to SHP file.."
-ogr2ogr --debug on -progress -f 'ESRI Shapefile' barangays.shp barangays.geojson
+ogr2ogr --debug on -progress -f 'ESRI Shapefile' $2 $1
 convert=$?
 if [ $convert -eq 0 ]; then
     echo OK
@@ -71,7 +77,7 @@ else
 fi
 
 echo "Loading SHP file to ElasticSearch.."
-ogr2ogr -f 'ElasticSearch' http://localhost:9200 barangays.shp 
+ogr2ogr -f 'ElasticSearch' http://localhost:9200 $2
 load2es=$?
 if [ $load2es -eq 0 ]; then
     echo OK

@@ -5,7 +5,31 @@
 
 ## Dependencies
 [Docker](https://www.docker.com/) - is a software platform designed to make it easier to create, deploy, and run applications by using containers. It allows developers to package up an application with all the parts it needs in a container, and then ship it out as one package.
+```
+Client:
+ Version:           18.06.1-ce
+ API version:       1.38
+ Go version:        go1.10.3
+ Git commit:        e68fc7a
+ Built:             Tue Aug 21 17:24:56 2018
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server:
+ Engine:
+  Version:          18.06.1-ce
+  API version:      1.38 (minimum version 1.12)
+  Go version:       go1.10.3
+  Git commit:       e68fc7a
+  Built:            Tue Aug 21 17:23:21 2018
+  OS/Arch:          linux/amd64
+  Experimental:     false
+```
+
 [ogr2ogr](https://gdal.org/programs/ogr2ogr.html) - can be used to convert simple features data between file formats. It can also perform various operations during the process, such as spatial or attribute selection, reducing the set of attributes, setting the output coordinate system or even reprojecting the features during translation.
+```
+Version: GDAL 2.4.0, released 2018/12/14
+```
 
 ## Installations
 How to install Docker on Ubuntu 18.04 [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04).
@@ -13,7 +37,11 @@ How to install OGR2OGR on Ubuntu 18.04 [here](https://mothergeo-py.readthedocs.i
 
 ## Usage
 ```
- ✘ jay@ThinkPad  ~/Desktop/docker-es-geojson  ./run.sh
+$ ./run.sh <input existing GEOSJSON file> <output generated SHP file>
+```
+
+```
+ ✘ jay@ThinkPad  ~/Desktop/docker-es-geojson  ./run.sh barangay.geojson barangay.shp
 Booting Docker..
 [sudo] password for jay: 
 OK
@@ -27,10 +55,10 @@ Removing Previous Docker Network..
 esnetwork
 OK
 Creating New Docker Network..
-9be061b773aac92233c5300d61bd02720ee357f3c5c62cbc76e1fe2000583cf7
+b079dace808b99b0e526a8d60e188e37d6fafaae901a4d641d1d7558b5f90eeb
 OK
 Creating New ElasticSearch Setup..
-e199ada7db0611a12076f4c7e9f9d449e094e9b104b3ccd641b8a2cf14c2167e
+c8b9530fcccd3f7514c97e2c53f225be73ea7c5d7f6c95bf5c82697b416d4e7d
 OK
 Converting GEOJSON file to SHP file..
 GNM: GNMRegisterAllInternal
@@ -222,7 +250,7 @@ GeoJSON: First pass: 98.86 %
 GeoJSON: First pass: 99.40 %
 GeoJSON: First pass: 99.94 %
 GeoJSON: First pass: 100.00 %
-GDAL: GDALOpen(barangays.geojson, this=0x12857f0) succeeds as GeoJSON.
+GDAL: GDALOpen(barangays.geojson, this=0x13247f0) succeeds as GeoJSON.
 GDAL: QuietDelete(barangays.shp) invoking Delete()
 GDAL: GDALDriver::Create(ESRI Shapefile,barangays.shp,0,0,0,Unknown,(nil))
 Shape: DBF Codepage = LDID/87 for barangays.shp
@@ -232,8 +260,8 @@ Warning 6: Normalized/laundered field name: 'district_id' to 'district_i'
 Warning 6: Normalized/laundered field name: 'standard_flag' to 'standard_f'
 0...10...20...30...40...50...60...70...80...90...100 - done.
 GDALVectorTranslate: 42058 features written in layer 'barangays'
-GDAL: GDALClose(barangays.geojson, this=0x12857f0)
-GDAL: GDALClose(barangays.shp, this=0x12b3270)
+GDAL: GDALClose(barangays.geojson, this=0x13247f0)
+GDAL: GDALClose(barangays.shp, this=0x1352270)
 OK
 Loading SHP file to ElasticSearch..
 OK
@@ -256,8 +284,6 @@ E[ElasticSearch]
 ```
 
 ## Notes
+- This setup is for development purposes only.
 - Shell script does not configure Docker ElasticSearch to persist data.
 - Running `run.sh` will recreate the ff: Docker Network for ElasticSearch, Docker Container for ElasticSearch, SHP file based on GEOJSON file.
-
-
-

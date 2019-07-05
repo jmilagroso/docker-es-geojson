@@ -26,6 +26,11 @@ Server:
   Experimental:     false
 ```
 
+[elasticsearch](https://hub.docker.com/_/elasticsearch) - Elasticsearch is a powerful open source search and analytics engine that makes data easy to explore.
+```
+Tag: 5.5.2
+```
+
 [ogr2ogr](https://gdal.org/programs/ogr2ogr.html) - can be used to convert simple features data between file formats. It can also perform various operations during the process, such as spatial or attribute selection, reducing the set of attributes, setting the output coordinate system or even reprojecting the features during translation.
 ```
 Version: GDAL 2.4.0, released 2018/12/14
@@ -33,6 +38,7 @@ Version: GDAL 2.4.0, released 2018/12/14
 
 ## Installations
 - How to install Docker on Ubuntu 18.04 [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04).
+- How to install ElasticSearch using Docker [here](https://hub.docker.com/_/elasticsearch?tab=description)
 - How to install OGR2OGR on Ubuntu 18.04 [here](https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html)
 
 ## Usage
@@ -274,14 +280,7 @@ OK
 ```
 
 ## UML diagram
-```mermaid
-graph LR
-A[OGR2OGR]
-A --> C(Convert GEOJSON to SHP)
-C --> D(Load SHP to ElasticSearch)
-D --> E
-E[ElasticSearch]
-```
+![Image of UML Diagram](https://i.imgur.com/zwDUrBg.png)
 
 ## Notes
 - This setup is for development purposes only.
